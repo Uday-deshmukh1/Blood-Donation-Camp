@@ -63,26 +63,29 @@ document.addEventListener('DOMContentLoaded', function() {
     noResults.innerHTML = 'No camps found for this location';
     campsGrid.parentNode.appendChild(noResults);
 
-    // Modal elements
+    // Modal elements - keep modal structure intact
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     overlay.innerHTML = `
         <div class="modal" id="modal">
             <span class="close" id="closeBtn">&times;</span>
             <h2>Register as Donor</h2>
-            <div class="field">
-                <label>Full Name</label>
-                <input type="text" required>
-            </div>
-            <div class="field">
-                <label>Email</label>
-                <input type="email" required>
-            </div>
-            <div class="field">
-                <label>Phone</label>
-                <input type="tel" required>
-            </div>
+            <form id="donorForm">
+                <div class="field">
+                    <label>Full Name</label>
+                    <input type="text" id="nameInput" required>
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" id="emailInput" required>
+                </div>
+                <div class="field">
+                    <label>Phone</label>
+                    <input type="tel" id="phoneInput" required>
+                </div>
+            </form>
             <button class="btn" id="submitBtn">Submit Registration</button>
+            <div id=" thankYouMessage" style="display:none; margin-top:1rem; padding-top:1rem; border-top:1px solid #e2e6ea; color:#2c3e50;"></div>
         </div>
     `;
     document.body.appendChild(overlay);
@@ -90,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modal');
     const closeBtn = document.getElementById('closeBtn');
     const submitBtn = document.getElementById('submitBtn');
+    const thankYouMessage = document.getElementById(' thankYouMessage');
+    const donorForm = document.getElementById('donorForm');
 
     function openModal() {
         overlay.style.display = 'flex';
@@ -97,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function closeModal() {
         overlay.style.display = 'none';
+        thankYouMessage.style.display = 'none';
+        donorForm.reset();
     }
 
     closeBtn.addEventListener('click', closeModal);
@@ -104,17 +111,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target === overlay) closeModal();
     });
 
-    submitBtn.addEventListener('click', function() {
-        const name = modal.querySelector('input[type="text"]').value;
-        const email = modal.querySelector('input[type="email"]').value;
-        const phone = modal.querySelector('input[type="tel"]').value;
+    // Form submission - prevent default and show thank you
+    donorForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('nameInput').value;
+        const email = document.getElementById('emailInput').value;
+        const phone = document.getElementById('phoneInput').value;
 
         if (name && email && phone) {
-            modal.innerHTML = `
+            // Show thank you message instead of replacing modal
+            thankYouMessage.style.display = 'block';
+            thankYouMessage.innerHTML = `
                 <h2>Thank You!</h2>
                 <p>Dear ${name}, your registration is complete!</p>
                 <p>We will contact you at ${email}</p>
-                <button class="btn" onclick="window.location.reload()">Close</button>
             `;
         } else {
             alert('Please fill all fields');
