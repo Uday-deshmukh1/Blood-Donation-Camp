@@ -30,67 +30,83 @@ main {
     padding: 0 1rem;
 }
 
-.camp-details, .eligibility, .registration {
-    background: #f8f9fa;
-    padding: 1.5rem;
+.search-filter {
     margin-bottom: 2rem;
+    text-align: center;
+}
+
+.search-filter input {
+    padding: 0.8rem 1.5rem;
+    width: 300px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-filter input:focus {
+    border-color: #e74c3c;
+}
+
+.camps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.camp-card {
+    background: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
 }
 
-.details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+.camp-card:hover {
+    transform: translateY(-4px);
 }
 
-.detail-item {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e2e6ea;
-}
-
-.detail-item:last-child {
-    border-bottom: none;
-}
-
-.label {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.3rem;
-}
-
-.eligibility ul {
-    list-style: none;
-    padding: 0;
-}
-
-.eligibility li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e2e6ea;
-}
-
-.eligibility li:last-child {
-    border-bottom: none;
-}
-
-form .form-group {
-    margin-bottom: 1rem;
-}
-
-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-form input {
+.camp-image {
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
+    height: 180px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.camp-content {
+    padding: 1.5rem;
+}
+
+.camp-content h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    color: #35424a;
+}
+
+.camp-details {
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.camp-details span {
+    display: block;
+    margin: 0.3rem 0;
+}
+
+.camp-location {
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-top: 0.8rem;
 }
 
 .btn {

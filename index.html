@@ -9,56 +9,17 @@
 <body>
     <header>
         <h1>Blood Donation Camp</h1>
-        <p>Save lives by donating blood</p>
+        <p>Give Blood. Save Lives.</p>
     </header>
     
     <main>
-        <section class="camp-details">
-            <h2>Camp Information</h2>
-            <div class="details-grid">
-                <div class="detail-item">
-                    <span class="label">Date:</span>
-                    <span class="value">June 15, 2024</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Time:</span>
-                    <span class="value">9:00 AM - 4:00 PM</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Location:</span>
-                    <span class="value">Community Hall, Main Street</span>
-                </div>
-            </div>
+        <section class="search-filter">
+            <input type="text" id="locationFilter" placeholder="Filter by location (Navsari, Township, etc.)">
         </section>
         
-        <section class="eligibility">
-            <h2>Eligibility Criteria</h2>
-            <ul>
-                <li>Age between 18-60 years</li>
-                <li>Weight above 45kg</li>
-                <li>Good health status</li>
-                <li>Hemoglobin above 12.5 g/dL</li>
-            </ul>
-        </section>
-        
-        <section class="registration">
-            <h2>Register as Donor</h2>
-            <form>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" required>
-                </div>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </section>
+        <div class="camps-grid" id="campsGrid">
+            <!-- Camps will be rendered by JavaScript -->
+        </div>
     </main>
     
     <footer>
