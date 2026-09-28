@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Amravati Life Saver Blood Donation Camp',
             location: 'Irwin Hospital Campus, Amravati',
-            address: 'General Hospital, Irwin Hospital Campus, Amravati, Maharashtra',
             pincode: '444601',
             date: '15 October 2026',
             time: '9:00 AM – 4:00 PM',
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Youth for Life Blood Donation Camp',
             location: 'Sant Gadge Baba Amravati University',
-            address: 'SGBAU Campus, Camp Road, Amravati, Maharashtra',
             pincode: '444602',
             date: '18 October 2026',
             time: '10:00 AM – 3:00 PM',
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Amravati Community Blood Camp',
             location: 'Badnera Road, Amravati',
-            address: 'Community Hall, Badnera Road, Amravati, Maharashtra',
             pincode: '444605',
             date: '22 October 2026',
             time: '9:30 AM – 3:30 PM',
@@ -33,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Give Life Blood Donation Drive',
             location: 'Rajapeth, Amravati',
-            address: 'Rajapeth Community Centre, Amravati, Maharashtra',
             pincode: '444605',
             date: '25 October 2026',
             time: '9:00 AM – 2:00 PM',
@@ -43,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Students Blood Donation Camp',
             location: 'Amravati City',
-            address: 'Student Activity Centre, Amravati, Maharashtra',
             pincode: '444601',
             date: '29 October 2026',
             time: '10:00 AM – 4:00 PM',
@@ -53,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'Hope for Life Blood Donation Camp',
             location: 'Dastur Nagar, Amravati',
-            address: 'Dastur Nagar Community Hall, Amravati, Maharashtra',
             pincode: '444606',
             date: '2 November 2026',
             time: '9:00 AM – 4:00 PM',
@@ -68,6 +62,64 @@ document.addEventListener('DOMContentLoaded', function() {
     noResults.className = 'no-results';
     noResults.innerHTML = 'No camps found for this location';
     campsGrid.parentNode.appendChild(noResults);
+
+    // Modal elements
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    overlay.innerHTML = `
+        <div class="modal" id="modal">
+            <span class="close" id="closeBtn">&times;</span>
+            <h2>Register as Donor</h2>
+            <div class="field">
+                <label>Full Name</label>
+                <input type="text" required>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" required>
+            </div>
+            <div class="field">
+                <label>Phone</label>
+                <input type="tel" required>
+            </div>
+            <button class="btn" id="submitBtn">Submit Registration</button>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('closeBtn');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function openModal() {
+        overlay.style.display = 'flex';
+    }
+
+    function closeModal() {
+        overlay.style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    submitBtn.addEventListener('click', function() {
+        const name = modal.querySelector('input[type="text"]').value;
+        const email = modal.querySelector('input[type="email"]').value;
+        const phone = modal.querySelector('input[type="tel"]').value;
+
+        if (name && email && phone) {
+            modal.innerHTML = `
+                <h2>Thank You!</h2>
+                <p>Dear ${name}, your registration is complete!</p>
+                <p>We will contact you at ${email}</p>
+                <button class="btn" onclick="window.location.reload()">Close</button>
+            `;
+        } else {
+            alert('Please fill all fields');
+        }
+    });
 
     function renderCamps(filter) {
         const filterLower = filter.toLowerCase();
@@ -121,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="camp-footer">
-                    <button class="btn">Register Now</button>
+                    <button class="btn" onclick="openModal()">Register Now</button>
                 </div>
             `;
             campsGrid.appendChild(card);
