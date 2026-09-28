@@ -1,62 +1,80 @@
 document.addEventListener('DOMContentLoaded', function() {
     const camps = [
         {
-            name: 'Navsari Camp',
-            location: 'Navsari, Maharashtra',
-            pincode: '444604',
-            date: 'June 15, 2024',
-            time: '9:00 AM - 4:00 PM',
-            organizer: 'Red Cross Society'
+            name: 'Amravati Life Saver Blood Donation Camp',
+            location: 'Irwin Hospital Campus, Amravati',
+            address: 'General Hospital, Irwin Hospital Campus, Amravati, Maharashtra',
+            pincode: '444601',
+            date: '15 October 2026',
+            time: '9:00 AM – 4:00 PM',
+            organizer: 'Amravati Life Saver Foundation',
+            contact: '0721-2663337'
         },
         {
-            name: 'Township Camp',
-            location: 'Township, Maharashtra',
-            pincode: '444604',
-            date: 'June 20, 2024',
-            time: '10:00 AM - 5:00 PM',
-            organizer: 'City Hospital'
+            name: 'Youth for Life Blood Donation Camp',
+            location: 'Sant Gadge Baba Amravati University',
+            address: 'SGBAU Campus, Camp Road, Amravati, Maharashtra',
+            pincode: '444602',
+            date: '18 October 2026',
+            time: '10:00 AM – 3:00 PM',
+            organizer: 'Youth for Life Foundation',
+            contact: '9876543210'
         },
         {
-            name: 'Ichalkaranji Camp',
-            location: 'Ichalkaranji, Maharashtra',
-            pincode: '444604',
-            date: 'June 25, 2024',
-            time: '9:00 AM - 4:00 PM',
-            organizer: 'Medical Association'
+            name: 'Amravati Community Blood Camp',
+            location: 'Badnera Road, Amravati',
+            address: 'Community Hall, Badnera Road, Amravati, Maharashtra',
+            pincode: '444605',
+            date: '22 October 2026',
+            time: '9:30 AM – 3:30 PM',
+            organizer: 'Amravati Community Group',
+            contact: '9823456789'
         },
         {
-            name: 'Sangli Camp',
-            location: 'Sangli, Maharashtra',
-            pincode: '444604',
-            date: 'July 01, 2024',
-            time: '10:00 AM - 4:00 PM',
-            organizer: 'Blood Bank Unit'
+            name: 'Give Life Blood Donation Drive',
+            location: 'Rajapeth, Amravati',
+            address: 'Rajapeth Community Centre, Amravati, Maharashtra',
+            pincode: '444605',
+            date: '25 October 2026',
+            time: '9:00 AM – 2:00 PM',
+            organizer: 'Give Life Amravati',
+            contact: '9765432108'
         },
         {
-            name: 'Sangli-Miraj Camp',
-            location: 'Sangli-Miraj, Maharashtra',
-            pincode: '444604',
-            date: 'July 05, 2024',
-            time: '9:00 AM - 3:00 PM',
-            organizer: 'Health Department'
+            name: 'Students Blood Donation Camp',
+            location: 'Amravati City',
+            address: 'Student Activity Centre, Amravati, Maharashtra',
+            pincode: '444601',
+            date: '29 October 2026',
+            time: '10:00 AM – 4:00 PM',
+            organizer: 'Amravati Student Welfare Group',
+            contact: '9898989898'
+        },
+        {
+            name: 'Hope for Life Blood Donation Camp',
+            location: 'Dastur Nagar, Amravati',
+            address: 'Dastur Nagar Community Hall, Amravati, Maharashtra',
+            pincode: '444606',
+            date: '2 November 2026',
+            time: '9:00 AM – 4:00 PM',
+            organizer: 'Hope for Life Foundation',
+            contact: '9812345678'
         }
     ];
 
     const campsGrid = document.getElementById('campsGrid');
     const locationFilter = document.getElementById('locationFilter');
     const noResults = document.createElement('div');
-    noResults.style.textAlign = 'center';
-    noResults.style.padding = '2rem';
-    noResults.style.color = '#666';
-    noResults.style.display = 'none';
+    noResults.className = 'no-results';
     noResults.innerHTML = 'No camps found for this location';
     campsGrid.parentNode.appendChild(noResults);
 
     function renderCamps(filter) {
         const filterLower = filter.toLowerCase();
         const filteredCamps = camps.filter(camp => 
-            camp.location.toLowerCase().includes(filterLower) || 
-            camp.name.toLowerCase().includes(filterLower)
+            camp.name.toLowerCase().includes(filterLower) ||
+            camp.location.toLowerCase().includes(filterLower) ||
+            camp.organizer.toLowerCase().includes(filterLower)
         );
 
         if (filteredCamps.length === 0) {
@@ -72,18 +90,38 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('div');
             card.className = 'camp-card';
             card.innerHTML = `
-                <div class="camp-image">Camp Image</div>
-                <div class="camp-content">
-                    <h2>${camp.name}</h2>
-                    <div class="camp-details">
-                        <span><strong>Location:</strong> ${camp.location}</span>
-                        <span><strong>Pincode:</strong> ${camp.pincode}</span>
-                        <span><strong>Date:</strong> ${camp.date}</span>
-                        <span><strong>Time:</strong> ${camp.time}</span>
-                        <span><strong>Organizer:</strong> ${camp.organizer}</span>
+                <div class="camp-header">
+                    <span class="emoji">🩸</span>
+                    <span>${camp.name}</span>
+                </div>
+                <div class="camp-body">
+                    <div class="field">
+                        <span class="location-label">📍 Location</span>
+                        <span>${camp.location}</span>
                     </div>
-                    <div class="camp-location">${camp.location}</div>
-                    <button class="btn">Register</button>
+                    <div class="field">
+                        <span class="address-label">📮 Pincode</span>
+                        <span>${camp.pincode}</span>
+                    </div>
+                    <div class="field">
+                        <span class="date-label">📅 Date</span>
+                        <span>${camp.date}</span>
+                    </div>
+                    <div class="field">
+                        <span class="time-label">⏰ Time</span>
+                        <span>${camp.time}</span>
+                    </div>
+                    <div class="field">
+                        <span class="organizer-label">👥 Organizer</span>
+                        <span>${camp.organizer}</span>
+                    </div>
+                    <div class="field">
+                        <span class="contact-label">📞 Contact</span>
+                        <span>${camp.contact}</span>
+                    </div>
+                </div>
+                <div class="camp-footer">
+                    <button class="btn">Register Now</button>
                 </div>
             `;
             campsGrid.appendChild(card);

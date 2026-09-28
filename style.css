@@ -57,8 +57,8 @@ main {
 
 .camp-card {
     background: #f8f9fa;
+    border: 1px solid #e2e6ea;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: transform 0.2s;
 }
@@ -67,62 +67,58 @@ main {
     transform: translateY(-4px);
 }
 
-.camp-image {
-    width: 100%;
-    height: 180px;
-    background: #ddd;
+.camp-header {
+    background: #35424a;
+    color: white;
+    padding: 1rem 1.2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 0.9rem;
+    gap: 0.5rem;
 }
 
-.camp-content {
-    padding: 1.5rem;
+.camp-header .emoji {
+    font-size: 1.2rem;
 }
 
-.camp-content h2 {
-    margin-top: 0;
-    font-size: 1.3rem;
-    color: #35424a;
+.camp-body {
+    padding: 1.2rem;
 }
 
-.camp-details {
-    margin: 0.8rem 0;
-    font-size: 0.9rem;
+.camp-body .field {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
     color: #555;
 }
 
-.camp-details span {
-    display: block;
-    margin: 0.3rem 0;
-}
-
-.camp-location {
-    background: #e74c3c;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+.camp-body .field .label {
+    width: 100px;
+    font-weight: bold;
+    color: #333;
     font-size: 0.8rem;
-    display: inline-block;
-    margin-top: 0.8rem;
 }
 
-.btn {
+.camp-footer {
+    padding: 0 1.2rem 1.2rem;
+    text-align: center;
+}
+
+.camp-footer .btn {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     background: #e74c3c;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
-    width: 100%;
-    margin-top: 1rem;
+    font-size: 0.9rem;
+    width: auto;
+    margin-top: 0.5rem;
 }
 
-.btn:hover {
+.camp-footer .btn:hover {
     background: #c0392b;
 }
 
@@ -131,4 +127,11 @@ footer {
     padding: 2rem 0;
     color: #666;
     font-size: 0.9rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    display: none;
 }
