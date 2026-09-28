@@ -62,7 +62,7 @@ main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
     width: 100%;
 }
 
-/* Simple modal */
+/* Modal styles */
 .overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -76,7 +76,6 @@ main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
 .modal {
     background: white;
     padding: 2rem;
-    border-radius: 0;
     width: 90%;
     max-width: 400px;
     animation: fadeIn 0.3s;
@@ -89,7 +88,6 @@ main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
 .modal .field { margin: 0.8rem 0; }
 .modal .field label { display: block; margin-bottom: 0.3rem; font-weight: bold; font-size: 0.8rem; }
 .modal .field input { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 0; margin-bottom: 0.5rem; }
-.modal .field select { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 0; margin-bottom: 0.5rem; }
 
 .modal .btn {
     width: 100%;
